@@ -21,6 +21,14 @@ class Library:
         Args:
         - book (Book): The book to be added.
         """
+
+        # Book fuction to add book
+        book ={
+            'title': None,
+            'Author': None
+        }
+
+        self.books.append(book)
         
 
     def remove_book(self, book):

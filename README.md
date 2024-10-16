@@ -1,5 +1,9 @@
 # Assessment 1 - Advanced Programming
 
+Name: Ashley Payne
+Course: Software Engineering
+Assignment: 1 Libary Application
+
 ## Project Overview
 This assessment requires you to create a Python application that simulates a simple library management system. The project will involve the use of Object-Oriented Programming (OOP) techniques, classes, and methods. You will also need to document the problem-solving process and provide a clear analysis of your approach.
 
@@ -14,6 +18,8 @@ By completing this assessment, you will be able to:
     - Create a GitHub repository for this project.
     - Commit your code regularly to demonstrate the development process.
     - Include a README file that outlines the project, setup instructions, and usage.
+
+    Initial Commit
 
     - Went to github created a repository called assignment-1
     - Went to Bradford college github page cloned there repository using the clone link provided
