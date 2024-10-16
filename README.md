@@ -15,6 +15,25 @@ By completing this assessment, you will be able to:
     - Commit your code regularly to demonstrate the development process.
     - Include a README file that outlines the project, setup instructions, and usage.
 
+    - Went to github created a repository called assignment-1
+    - Went to Bradford college github page cloned there repository using the clone link provided
+    - Used the provided link in the github User Interface and created a local repo of the assignment
+    - Opened repo on loacl system
+    - Deleted the git file that came with the download
+    - Opened the program in VS code
+    - Opened new termianl checked the file I was in with pwd
+    - Used ls to check contents
+    - Then used cd to change to correct folder
+    - Used git add . to add a new git file
+    - Then triggered a commit to my git repo using git commit -m "initial upload"
+    - I then created a branch called main using git branch -M main
+    - Then added a remote and added origin for my assignment
+    - Then pushed this with the git push -u origin main to my repo
+
+    Modification to readme file
+
+    - Modified the Readme file to include the steps I took to setup and clone and push to my own personal repo 
+
 - ### Classes and Methods:
     - Create classes to represent the main entities in the library management system (e.g., Library, Book, Member).
     - Each class should have appropriate attributes and methods.
