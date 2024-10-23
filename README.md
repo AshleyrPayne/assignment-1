@@ -49,6 +49,8 @@ By completing this assessment, you will be able to:
     - The Library class should manage a collection of books and members.
     - Implement methods to:
         - Add and remove books from the library.
+            - Added a function in the add books class to add a book to the list of books
+            - Added a function to remove books from the books list
         - Add and remove members from the library.
         - Borrow and return books.
         - List available books.
