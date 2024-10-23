@@ -22,7 +22,7 @@ class Library:
         - book (Book): The book to be added.
         """
 
-        # Book fuction to add book
+        # Book fuction to add book into a list of books the libary has.
         book ={
             'title': None,
             'Author': None
