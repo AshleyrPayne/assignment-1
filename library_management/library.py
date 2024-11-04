@@ -21,16 +21,8 @@ class Library:
         Args:
         - book (Book): The book to be added.
         """
-
-        # Book fuction to add book into a list of books the libary has.
-        book ={
-            'title': None,
-            'Author': None
-        }
-
         # Adds book to the book list
-        self.books.append(book)
-        
+        self.books.append(book)        
 
     def remove_book(self, book):
         """
@@ -39,12 +31,6 @@ class Library:
         Args:
         - book (Book): The book to be removed.
         """
-        # Book function to check if a book is present in list, if present then delete it
-        
-        if len(book):
-            print(f"No books in the list")
-        else:
-            book.pop()  
 
 
     def add_member(self, member):
