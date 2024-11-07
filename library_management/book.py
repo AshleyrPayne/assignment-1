@@ -1,3 +1,5 @@
+import json
+
 class Book:
     """
     A class to represent a book.
@@ -17,3 +19,17 @@ class Book:
         """
         self.title = title
         self.author = author
+
+    def get_book(self):
+        """
+        Adds a book to the library.
+
+        Args:
+        - book (Book): The book to be added.
+        """
+        return{
+            "title": self.title,
+            "author": self.author
+        }
+    
+

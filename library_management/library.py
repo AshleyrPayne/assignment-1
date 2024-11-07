@@ -1,3 +1,6 @@
+import json
+import os
+
 class Library:
     """
     Represents a library.
@@ -21,8 +24,19 @@ class Library:
         Args:
         - book (Book): The book to be added.
         """
-        # Adds book to the book list
-        self.books.append(book)        
+        # Adds book dictionary to the books list
+        self.books.append(book)    
+
+
+    def save(self):
+
+        with open('data.json', 'w') as f:
+            # Sets file's current position at offset.
+            json_data = json.dumps(self.books, default=lambda o: o.__dict__,indent=4)
+            print(json_data)
+            f.seek(0)
+            f.write(json_data)
+            #json.dump(json_data, f)           
 
     def remove_book(self, book):
         """
