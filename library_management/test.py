@@ -91,7 +91,7 @@ elif y==3:
         # Add student member to student members list
         library.add_studentmember(studentMember)
         # Save student members to file
-        library.members_save()
+        library.studentmembers_save()
         #
         # Check to see if student added to library member list
         l = len(library.studentmembers)
