@@ -15,6 +15,7 @@ class Library:
         Initializes an empty library.
         """
         self.books = []
+        self.members = []
         self.studentmembers = []
         self.teachermembers = []
 
@@ -67,7 +68,7 @@ class Library:
         """
 
         # Adds student to student members list
-        self.studentmembers.append(member) 
+        self.members.append(member) 
 
     def add_teachermember(self, member):
         """
@@ -80,11 +81,11 @@ class Library:
         # Adds student to student members list
         self.teachermembers.append(member)  
 
-    def studentmembers_save(self):
+    def members_save(self):
 
-        with open('Studentmembers_data.json', 'w') as f:
+        with open('members_data.json', 'w') as f:
             # Sets file's current position at offset.
-            json_data = json.dumps(self.studentmembers, default=lambda o: o.__dict__,indent=4)
+            json_data = json.dumps(self.members, default=lambda o: o.__dict__,indent=4)
             print(json_data)
             f.seek(0)
             f.write(json_data)      
