@@ -1,5 +1,3 @@
-import json
-
 class Book:
     """
     A class to represent a book.
@@ -19,29 +17,3 @@ class Book:
         """
         self.title = title
         self.author = author
-
-    def get_book(self):
-        """
-        Adds a book to the library.
-
-        Args:
-        - book (Book): The book to be added.
-        """
-        return{
-            "title": self.title,
-            "author": self.author
-        }
-    
-    def print(self):
-
-        
-        print(f"title = {self.title}, author = {self.author}")
-    
-    
-    def __eq__(self, other):
-
-        # Override the equals operator 
-        if self.title == other.title and self.author == other.author:
-           return True
-        else:
-           return False
