@@ -15,7 +15,8 @@ class Library:
         Initializes an empty library.
         """
         self.books = []
-        self.members = []
+        self.studentmembers = []
+        self.teachermembers = []
 
     def add_book(self, book):
         """
@@ -30,13 +31,19 @@ class Library:
 
     def save(self):
 
-        with open('data.json', 'w') as f:
+        with open('library.json', 'w') as f:
             # Sets file's current position at offset.
             json_data = json.dumps(self.books, default=lambda o: o.__dict__,indent=4)
             print(json_data)
             f.seek(0)
             f.write(json_data)
-            #json.dump(json_data, f)           
+                              
+    def print(self):
+
+        # print library of books
+        for book in self.books:
+            book.print()
+
 
     def remove_book(self, book):
         """
@@ -45,16 +52,42 @@ class Library:
         Args:
         - book (Book): The book to be removed.
         """
+        # Remove book from memory
+        book.print()
+        self.books.remove(book)
 
 
-    def add_member(self, member):
+
+    def add_studentmember(self, member):
         """
         Adds a member to the library.
 
         Args:
         - member (Member): The member to be added.
         """
-        
+
+        # Adds student to student members list
+        self.studentmembers.append(member) 
+
+    def add_teachermember(self, member):
+        """
+        Adds a member to the library.
+
+        Args:
+        - member (Member): The member to be added.
+        """
+
+        # Adds student to student members list
+        self.teachermembers.append(member)  
+
+    def studentmembers_save(self):
+
+        with open('Studentmembers_data.json', 'w') as f:
+            # Sets file's current position at offset.
+            json_data = json.dumps(self.studentmembers, default=lambda o: o.__dict__,indent=4)
+            print(json_data)
+            f.seek(0)
+            f.write(json_data)      
 
     def remove_member(self, member):
         """
@@ -63,7 +96,11 @@ class Library:
         Args:
         - member (Member): The member to be removed.
         """
-        
+
+        self.members.remove(member)        
+
+
+
 
     def borrow_book(self, book, member):
         """

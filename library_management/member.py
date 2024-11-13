@@ -58,6 +58,14 @@ class StudentMember(Member):
         super().__init__(name)
         self.student_id = student_id
 
+    def __eq__(self, other):
+
+        # Override the equals operator 
+        if self.name == other.name and self.student_id == other.student_id:
+           return True
+        else:
+           return False
+
 
 class TeacherMember(Member):
     """
@@ -78,3 +86,11 @@ class TeacherMember(Member):
         """
         super().__init__(name)
         self.teacher_id = teacher_id
+
+    def __eq__(self, other):
+
+        # Override the equals operator 
+        if self.name == other.name and self.teacher_id == other.teacher_id:
+           return True
+        else:
+           return False

@@ -32,4 +32,16 @@ class Book:
             "author": self.author
         }
     
+    def print(self):
 
+        
+        print(f"title = {self.title}, author = {self.author}")
+    
+    
+    def __eq__(self, other):
+
+        # Override the equals operator 
+        if self.title == other.title and self.author == other.author:
+           return True
+        else:
+           return False
