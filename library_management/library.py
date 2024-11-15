@@ -21,6 +21,8 @@ class Library:
         Args:
         - book (Book): The book to be added.
         """
+        # Adds a copy of book to the books list
+        self.books.append(book)
         
 
     def remove_book(self, book):
@@ -30,7 +32,30 @@ class Library:
         Args:
         - book (Book): The book to be removed.
         """
-        
+        # Removes first instance of book from the books list
+        self.books.remove(book)
+
+    def remove_book_index(self, item):
+        """
+        Removes a book from the library.
+
+        Args:
+        - book (Book): The book to be removed.
+        """
+        # Removes first instance of book from the books list
+        self.books.pop(item)
+
+    def print(self):
+        # Check to see if book added to library
+        l = len(self.books)
+        for book in self.books:
+            print(book, end=' ')
+            book.print()
+        print (l)
+        if l > 0:
+            print(f"Library has {l} books")
+        else:
+            print("No books in library")  
 
     def add_member(self, member):
         """
@@ -39,6 +64,9 @@ class Library:
         Args:
         - member (Member): The member to be added.
         """
+        # Adds a member to the members list
+        self.members.append(member)
+
         
 
     def remove_member(self, member):
@@ -48,6 +76,9 @@ class Library:
         Args:
         - member (Member): The member to be removed.
         """
+
+        # Removes first instance of a member from the members list
+        self.members.remove(member)
         
 
     def borrow_book(self, book, member):

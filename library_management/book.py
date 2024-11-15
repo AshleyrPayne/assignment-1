@@ -17,3 +17,15 @@ class Book:
         """
         self.title = title
         self.author = author
+
+    def get_book(self):
+
+        return{
+            "title": self.title,
+            "author": self.author
+        }
+
+    def print(self):
+
+        # Print function to print books
+        print(f"title = {self.title}, author = {self.author}")
