@@ -27,5 +27,5 @@ class Book:
 
     def print(self):
 
-        # Print function to print books
+        # Print function to print book
         print(f"title = {self.title}, author = {self.author}")

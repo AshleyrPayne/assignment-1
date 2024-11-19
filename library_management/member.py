@@ -58,6 +58,10 @@ class StudentMember(Member):
         super().__init__(name)
         self.student_id = student_id
 
+    def print(self):
+
+        # Print function to print student member
+        print(f"Name = {self.name}, student_id = {self.student_id}")
 
 class TeacherMember(Member):
     """
@@ -78,3 +82,8 @@ class TeacherMember(Member):
         """
         super().__init__(name)
         self.teacher_id = teacher_id
+
+    def print(self):
+
+        # Print function to print teacher member
+        print(f"Name = {super.__name__}, student_id = {self.student_id}")

@@ -55,7 +55,19 @@ class Library:
         if l > 0:
             print(f"Library has {l} books")
         else:
-            print("No books in library")  
+            print("No books in library")
+
+    def print_members(self):
+        l = len(self.members)
+        for member in self.members:
+            print(member, end=' ')
+            member.print()
+        print(l)
+        if l > 0:
+            print(f"Library has {l} members")
+        else:
+            print("No members in library")
+
 
     def add_member(self, member):
         """
@@ -66,8 +78,6 @@ class Library:
         """
         # Adds a member to the members list
         self.members.append(member)
-
-        
 
     def remove_member(self, member):
         """
@@ -80,7 +90,6 @@ class Library:
         # Removes first instance of a member from the members list
         self.members.remove(member)
         
-
     def borrow_book(self, book, member):
         """
         Allows a member to borrow a book from the library.

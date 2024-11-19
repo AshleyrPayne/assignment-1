@@ -5,6 +5,7 @@
 from book import Book
 from library import Library
 from member import Member, TeacherMember, StudentMember
+import re
 
 def create_instance():
     # Create a new instance of the Book class
@@ -59,6 +60,7 @@ def add_book_loop(y, library):
         print(f"end {n}")
 
 def get_indices(lst, target):
+    # list comprehension to directly generate a list of indices for elements in the list
     return[index for index, element in enumerate(lst) if element in target] 
 
 def remove_all_books(book, library):
@@ -144,44 +146,173 @@ def Remove_book_menu(library):
                     print("Invalid input. Please enter yes/no.")      
             else:
                 print("Invalid input. Please enter yes/no.")
+
+def Validator (id):
+    # Validator checking to see if the ID inputted is numbers only
+    valid_id = 0
+    while valid_id != 1:
+        if re.search(r"[a-zA-Z]",id):
+            print(f"Invalid character evident")
+            print(f"Please enter valid id")
+        else:
+            print(f"ID valid")
+            valid_id +=1
+
+def Add_member_menu(library):
+    while True:
+        print("-----------------------------------------------------------")
+        print("Welcome to adding members to the library")
+        print("-----------------------------------------------------------")
+        print()
+        print("-----------------------------------------------------------")
+        print("How many members would you like to add to the library?")
+        print("-----------------------------------------------------------")
+        print()
+        print("-----------------------------------------------------------")
+        y=int(input("Enter number of members you would like to enter: "))
+        print("-----------------------------------------------------------")
+        print()
+        print("-----------------------------------------------------------")
+        user_input = input("Is this the correct amount? (yes/no):")
+        if user_input.lower() in ["yes", "y"]:
+            add_member(y, library)
+            return
+        elif user_input.lower() in ["no", "n"]:
+            continue
+        else:
+            print("Invalid input. Please enter yes/no.")
+
+def add_member(y, library):
+    n = 0
+    #While loop to enter x amount of members
+    while n < y:
+        print(f"Beginning {n}")
+        # Get input
+        print()
+        print("-----------------------------------------------------------")
+        print(f"Please enter name of member")
+        print("-----------------------------------------------------------")
+        print()
+        fname = input("Enter first name:")
+        lname = input("Enter last name:")
+        name = (fname + lname)
+        print()
+        print("-----------------------------------------------------------")
+        print(f"Press 1 for student or 2 for teacher") 
+        print("-----------------------------------------------------------")
+        print()
+        x = int(input("Enter option: "))              
+        if x == 1:
+            id = input("Please enter your ID: ")
+            Validator(id)
+            print("Valid student ID")
+            # creates a new stuent member
+            studentMember = StudentMember(name, id)
+            # Cllas add member function in library and adds a student member to members list
+            library.add_member(studentMember)
+            library.print_members()
+            n += 1
+        elif x == 2:
+            id = input("Please enter your ID: ")
+            Validator(id)
+            print("Valid teacher ID")
+            # creates a new stuent member
+            teacherMember = TeacherMember(name, id)
+            library.add_member(teacherMember)                      
+            library.print_members()
+            n += 1
+        #https://thepythonguru.com/python-regular-expression/ this needed for validator
+
+def Search_for_member(id, library):
+    for member in library.members:
+        if isinstance(member, StudentMember):
+            if member.student_id == id:
+                return(member)
+        elif isinstance(member, TeacherMember):
+            if member.teacher_id == id:
+                return(member)
+    return(None)
+
+def Remove_member_menu(library):
+    flag = True
+    while flag:
+        print("-----------------------------------------------------------")
+        print("Welcome to remove members from the library")
+        print("-----------------------------------------------------------")
+        while len(library.members):
+            print()
+            print("-----------------------------------------------------------")
+            print("Remove member")
+            print("-----------------------------------------------------------")
+            library.print_members()  
+            print("-----------------------------------------------------------")
+            print(f"Please enter name of member")
+            print("-----------------------------------------------------------")
+            print()
+            fname = input("Enter first name: ")
+            lname = input("Enter last name: ")
+            name = (fname + " " + lname)
+            print("-----------------------------------------------------------")
+            print()
+            id = input("Please enter your ID: ")
+            member = Search_for_member(id, library):
+            if member != None:
+                print("member found")
+            else:
+                print("member not found")
+            print("-----------------------------------------------------------")
+            print(f"Do you want to delete this member")
+            print("-----------------------------------------------------------")            
+            print()
+            print("-----------------------------------------------------------")
+            user_input = input("Do you want to remove the member? (yes/no):")
+            print("-----------------------------------------------------------")
+            if user_input.lower() in ["yes", "y"]:
+                if member != None:
+                    print("member found")
+                    library.remove_member(member)
+                    return
+                else:
+                    print("member not found")
+                    return
+            elif user_input.lower() in ["no", "n"]:
+                continue     
+            else:
+                print("Invalid input. Please enter yes/no.")
+
+def Borrow_book(library):
+    pass
                         
 def View_library(library):
     print("Viewing library")
     library.print()
     print("view_library exit")
 
+def View_library_members(library):
+    print("Viewing members of library")
+    library.print_members()
+    print("view library exit")    
+
 def default(selection):
-    if selection != 1 or 2 or 3 or 4 or 5:
+    if selection != 1 or 2 or 3 or 4 or 5 or 6:
         print(f"{selection} Is a invalid input. Supported operators are 1, 2, 3, 4, 5")
 
-'''
-def run_case(selection, library):
-    print(f"selection = {selection}")
-    options = {
-         1 : Add_book_menu(library),
-        #'2': Remove_book_menu(library),
-        #'3': Add_member_menu,
-        #'4': Remove_member_menu,
-        #'5': Borrow_book
-        6 : View_library(library)
-    }
-    options.get(selection, default(selection))
-'''
 
 def switcher(selection, library):
     print("Enter switcher")
     if selection == 1:
         Add_book_menu(library)
     elif selection == 2:
-        print(f"selection = {selection}")
         Remove_book_menu(library)
+    elif selection == 3:
+        Add_member_menu(library)
+    elif selection == 4:
+        Remove_member_menu(library)    
     elif selection == 6:
-        print(f"selection = {selection}")
         View_library(library)
     else:
-        print(f"selection = {selection}")
-        #default(selection)
-    print("Exit switcher")
+        default(selection)
+        print("Exit switcher")
 
 def main_menu(library):
     Flag = True
@@ -206,7 +337,6 @@ def main_menu(library):
         print()
         selection = int(input("Enter input: "))
         switcher(selection, library)
-        print("hello after run case")
     else:
         Flag = False
 
