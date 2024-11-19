@@ -195,7 +195,7 @@ def add_member(y, library):
         print()
         fname = input("Enter first name:")
         lname = input("Enter last name:")
-        name = (fname + lname)
+        name = (fname + " " + lname)
         print()
         print("-----------------------------------------------------------")
         print(f"Press 1 for student or 2 for teacher") 
@@ -234,8 +234,7 @@ def Search_for_member(id, library):
     return(None)
 
 def Remove_member_menu(library):
-    flag = True
-    while flag:
+    while True:
         print("-----------------------------------------------------------")
         print("Welcome to remove members from the library")
         print("-----------------------------------------------------------")
@@ -244,22 +243,13 @@ def Remove_member_menu(library):
             print("-----------------------------------------------------------")
             print("Remove member")
             print("-----------------------------------------------------------")
-            library.print_members()  
-            print("-----------------------------------------------------------")
-            print(f"Please enter name of member")
             print("-----------------------------------------------------------")
             print()
-            fname = input("Enter first name: ")
-            lname = input("Enter last name: ")
-            name = (fname + " " + lname)
             print("-----------------------------------------------------------")
             print()
             id = input("Please enter your ID: ")
-            member = Search_for_member(id, library):
-            if member != None:
-                print("member found")
-            else:
-                print("member not found")
+            Validator(id)
+            member = Search_for_member(id, library)
             print("-----------------------------------------------------------")
             print(f"Do you want to delete this member")
             print("-----------------------------------------------------------")            
@@ -280,8 +270,93 @@ def Remove_member_menu(library):
             else:
                 print("Invalid input. Please enter yes/no.")
 
-def Borrow_book(library):
-    pass
+def List_of_available_books(library):
+    print("-----------------------------------------------------------")
+    print("Welcome to available books in the library")
+    print("-----------------------------------------------------------")
+    library.list_available_books()
+    print("Press any key to return to Borrow Book menu")
+
+def Current_on_loan_books(library):
+    print("-----------------------------------------------------------")
+    print("Welcome to current books in on loan")
+    print("-----------------------------------------------------------")
+    library.list_borrowed_books()
+    print("Press any key to return to Borrow Book menu")
+
+def Borrow_Book(library):
+    while True:
+        print("-----------------------------------------------------------")
+        print("Welcome to borrow book")
+        print("-----------------------------------------------------------")
+        id = input("Please enter your ID: ")
+        Validator(id)
+        member = Search_for_member(id, library)
+        print("-----------------------------------------------------------")
+        print()
+        print("-----------------------------------------------------------")
+        title = input("Enter Book name: ")
+        print("-----------------------------------------------------------")
+        author = input("Enter Book author: ")
+        print("-----------------------------------------------------------")
+        book = Book (title, author)
+        user_input = input("Do you want to borrow this book? (yes/no):")
+        print("-----------------------------------------------------------")
+        if user_input.lower() in ["yes", "y"]:
+            library.borrow_book(book, member)
+            return
+        elif user_input.lower() in ["no", "n"]:
+            continue
+        else: 
+            print("Invalid input. Please enter yes/no.")
+
+def Return_borrowed_book(library):
+    while True:
+        print("-----------------------------------------------------------")
+        print("Welcome to return book")
+        print("-----------------------------------------------------------")
+        id = input("Please enter your ID: ")
+        Validator(id)
+        member = Search_for_member(id, library)
+        print("-----------------------------------------------------------")
+        print()
+        member.print_borrowed_books()
+        print("-----------------------------------------------------------")
+        title = input("Enter Book name: ")
+        print("-----------------------------------------------------------")
+        author = input("Enter Book author: ")
+        print("-----------------------------------------------------------")
+        book = Book (title, author)
+        user_input = input("Do you want to return this book? (yes/no):")
+        print("-----------------------------------------------------------")
+        if user_input.lower() in ["yes", "y"]:
+            library.return_book(book, member)
+            return
+        elif user_input.lower() in ["no", "n"]:
+            continue
+        else: 
+            print("Invalid input. Please enter yes/no.")        
+
+
+
+def Borrow_Book_Menu(library):
+    
+    while True:
+        print("-----------------------------------------------------------")
+        print("Welcome to Borrow and return books from the library")
+        print("-----------------------------------------------------------")
+        print("-----------------------------------------------------------")
+        print("Press 1 for list of available books")
+        print("Press 2 for list of books currently on loan" )
+        print("Press 3 to borrow a book")
+        print("Press 4 to return a book to the library")
+        print("-----------------------------------------------------------")
+        selection = int(input("Enter input: "))
+        Borrow_switcher(selection, library)
+
+
+    
+
                         
 def View_library(library):
     print("Viewing library")
@@ -295,8 +370,11 @@ def View_library_members(library):
 
 def default(selection):
     if selection != 1 or 2 or 3 or 4 or 5 or 6:
-        print(f"{selection} Is a invalid input. Supported operators are 1, 2, 3, 4, 5")
+        print(f"{selection} Is a invalid input. Supported operators are 1, 2, 3, 4, 5, 6")
 
+def Borrow_default(selection):
+    if selection != 1 or 2 or 3 or 4:
+        print(f"{selection} Is a invalid input. Supported operators are 1, 2, 3, 4")
 
 def switcher(selection, library):
     print("Enter switcher")
@@ -307,12 +385,28 @@ def switcher(selection, library):
     elif selection == 3:
         Add_member_menu(library)
     elif selection == 4:
-        Remove_member_menu(library)    
+        Remove_member_menu(library)
+    elif selection == 5:
+        Borrow_Book_Menu(library)    
     elif selection == 6:
         View_library(library)
     else:
         default(selection)
         print("Exit switcher")
+
+def Borrow_switcher(selection, library):
+    print("Enter Borrow switcher")
+    if selection == 1:
+        List_of_available_books(library)
+    elif selection == 2:
+        Current_on_loan_books(library)
+    elif selection == 3:
+        Borrow_Book(library)
+    elif selection == 4:
+        Remove_member_menu(library)
+    else:
+        Borrow_default(selection)
+        print("Exit Borrow switcher")
 
 def main_menu(library):
     Flag = True

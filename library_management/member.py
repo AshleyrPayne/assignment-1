@@ -37,6 +37,10 @@ class Member:
         """
         self.borrowed_books.remove(book)
 
+    def print_borrowed_books(self):
+        for book in self.borrowed_books:
+            book.print()
+
 
 class StudentMember(Member):
     """
@@ -86,4 +90,4 @@ class TeacherMember(Member):
     def print(self):
 
         # Print function to print teacher member
-        print(f"Name = {super.__name__}, student_id = {self.student_id}")
+        print(f"Name = {self.name}, student_id = {self.teacher_id}")
