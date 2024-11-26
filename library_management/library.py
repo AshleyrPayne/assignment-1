@@ -5,6 +5,18 @@ class Library:
     Attributes:
     - books (list): A list of books in the library.
     - members (list): A list of members in the library.
+    Functions:
+    - add_book: Adds a book object to the books list
+    - remove_book: Removes a book object from the books list
+    - remove_book_index: Removes each instance of a book from the library at different points in the books list
+    - print: prints all books in library
+    - print_member: prints a member
+    - add_member: adds member object to the members list
+    - remove_member: removes a member object from the members list
+    - borrow_book: removes a book object from the books list and adds it to the member borrowed books list
+    - return_book: returns a book object from the borrowed books list of member back to the library
+    - list_of_available_books: prints all books in the library
+    - list_of_borrowed_books: prints the list of all borrowed books in the library
     """
 
     def __init__(self):

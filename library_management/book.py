@@ -29,3 +29,10 @@ class Book:
 
         # Print function to print book
         print(f"title = {self.title}, author = {self.author}")
+
+    def __eq__(self, other):
+        # Override the equals operator
+        if self.title == other.title and self.author == other.author:
+            return True
+        else:
+            return False
